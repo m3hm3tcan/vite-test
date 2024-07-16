@@ -13,15 +13,14 @@ on:
       projectName:
         description: 'Project Name'
         required: true
-
+env:
+  LEVEL: ${{ inputs.logLevel }}
+  PROJECTNAME: ${{ inputs.projectName }}
 jobs:
   log-the-inputs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
       - run: |
-          echo "Log level: $LEVEL"
           echo "Log level: $PROJECTNAME"
-        env:
-          LEVEL: ${{ inputs.logLevel }}
-          PROJECTNAME: ${{ inputs.projectName }}
+          echo "Log level: $LEVEL"
