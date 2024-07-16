@@ -19,7 +19,7 @@ env:
 jobs:
   log-the-inputs:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/testing'
     steps:
       - run: |
           echo "Log level: $PROJECTNAME"
