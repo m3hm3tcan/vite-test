@@ -1,18 +1,46 @@
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      org:
+        description: 'Org Name'
         required: true
-        default: 'info'
+        default: 'Test Org'
         type: choice
         options:
-        - info
-        - warning
-        - debug
+        - Test Org
+        - XXX Org
+        - Deneme Org
       projectName:
         description: 'Project Name'
         required: true
+      workItemType:
+        description: 'Work Item Type'
+        required: true
+        default: 'User Story'
+        type: choice
+        options:
+          - User Story
+          - Feature
+          - Bugs
+      ruleType:
+        description: 'Rule Type'
+        required: true
+        default: 'Mandatary Wrok ID'
+        type: choice
+        options:
+          - Mandatory Work ID
+          - Mandatory InvestmentDimension
+          - StoryPointsPicklist
+          - StoryPointsPicklistReverse
+      stageCategory:
+        description: 'Stage'
+        required: true
+        default: 'N/A'
+        type: choice
+        options:
+          - N/A
+          - InProgress
+          - Complated
 
 jobs:
   log-the-inputs:
@@ -20,8 +48,24 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - run: |
-          echo "Log level: $LEVEL"
-          echo "Log level: $PROJECTNAME"
+          echo "Org: $ORG"
+          echo "Project: $PROJECTNAME"
+          echo "Wrok Item Type: $WROKITEMTYPE"
+          echo "Rule Type: $RULETYPE"
+          echo "Log level: $STATECATEGORY"
         env:
-          LEVEL: ${{ inputs.logLevel }}
-          PROJECTNAME: ${{ inputs.projectName }}
+          ORG: ${{ inputs.org }}
+          PROJECTNAME: ${{ inputs.projectName }} 
+          WROKITEMTYPE: ${{ inputs.workItemType }} 
+          RULETYPE: ${{ inputs.ruleType }} 
+          STATECATEGORY: ${{ inputs.stageCategory }} 
+
+
+
+
+
+
+
+
+
+          
